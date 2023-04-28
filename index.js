@@ -9,7 +9,7 @@ let dragDistance = 5;
 
 function setup() {
   canvas = createCanvas(800, 1000);
-  canvas.parent("pageContainer");
+  canvas.parent("sketch");
 
   board = new Board();
 
@@ -31,18 +31,22 @@ function setup() {
 }
 
 function draw() {
+  clear();
   background("lightpink");
+  //   console.log("drawing");
 
-  board.makeBoard();
+  board.drawBoard();
 
   for (let i = 0; i < boardPieces.length; i++) {
     boardPieces[i].drawPiece();
   }
 
-  let newDragPos = new p5.Vector(mouseX, mouseY);
-  if (dragging && newDragPos.dist(dragStart) > dragDistance) {
-    draggingPiece.pos.x = mouseX;
-    draggingPiece.pos.y = mouseY;
+  if (dragging) {
+    let newDragPos = new p5.Vector(mouseX, mouseY);
+    if (newDragPos.dist(dragStart) > dragDistance) {
+      draggingPiece.pos.x = mouseX;
+      draggingPiece.pos.y = mouseY;
+    }
   }
 }
 

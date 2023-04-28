@@ -38,12 +38,24 @@ canvas {
   height: auto !important;
 }
 
-#pageContainer {
-  min-height: 100vh;
-  /*vertical center*/
+.pageContainer {
+  /* min-height: 100vh; */
   display: flex;
   align-items: center;
   gap: 30px;
+  position: relative;
+  flex-direction: column;
+}
+
+.usernameInputCont {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+#sketch {
+  display: flex;
+  align-items: center;
   position: relative;
   flex-direction: column;
 }

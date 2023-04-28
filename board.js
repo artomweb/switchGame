@@ -16,7 +16,7 @@ class Board {
     ];
   }
 
-  makeBoard() {
+  drawBoard() {
     let w = this.boardWidth / 4;
     let h = this.boardHeight / 4;
 
