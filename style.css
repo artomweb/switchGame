@@ -1,0 +1,55 @@
+@font-face {
+  font-family: GillSansMedium;
+  src: url(font/GillSansBold.otf);
+}
+
+html,
+body {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+  margin: 0;
+  padding: 0;
+}
+
+.pageTitle {
+  font-family: GillSansMedium;
+  letter-spacing: -4px;
+  margin-top: 30px;
+  text-align: center;
+  font-size: calc(1.5em + 5.6vw);
+}
+
+canvas {
+  display: block;
+  position: relative;
+  /* border: 2px solid black; */
+  max-width: 500px !important;
+  height: auto !important;
+}
+
+#pageContainer {
+  min-height: 100vh;
+  /*vertical center*/
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+  flex-direction: column;
+}
+
+@media (max-width: 645px) {
+  canvas {
+    max-width: 95% !important;
+  }
+}
