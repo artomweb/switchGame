@@ -1,13 +1,19 @@
 var socket = io("http://localhost:3000/filler");
-let myID;
 let gameID;
 
 let requestAlert;
 let gameJoinedMessage;
 
-let myTurn = false;
+let serverData;
 
-let serverBoard = [[], [], [], []];
+let allServerData;
+
+document.getElementById("usernameInput").addEventListener("keyup", function (event) {
+  event.preventDefault();
+  if (event.code === "Enter") {
+    document.getElementById("submitButton").click();
+  }
+});
 
 socket.on("new user list", function (msg) {
   updateUsersOnline(msg);
@@ -16,7 +22,7 @@ socket.on("new user list", function (msg) {
 socket.on("connected client", (data) => {
   console.log(data.msg);
   if (data.error === undefined) {
-    createMessage("Connection Status", "Connection Successful", "", "alert-success");
+    createMessage("Connection Status", "Connection Successful", "alert-success");
     // createMessage("Connection Status", "Connection Successful", "alert-primary", (timed = false));
   }
 });
@@ -27,7 +33,7 @@ function updateUsersOnline(msg) {
   let users = msg.userNameList;
   let listDiv = document.getElementById("listOfUsers");
 
-  myID = msg.yourID;
+  let myID = msg.yourID;
 
   if (users.length === 0) {
     listDiv.innerHTML = "no users online";
@@ -58,7 +64,7 @@ function requestConnection(id) {
 
 socket.on("request incoming", (data) => {
   console.log("Incoming request from: ", data.userName);
-  requestAlert = new bootstrap.Alert(createMessage("REQUEST INCOMING", "From " + data.userName, "acceptRequest('" + data.userID + "')", "alert-primary", 10000));
+  requestAlert = new bootstrap.Alert(createMessage("REQUEST INCOMING", "From " + data.userName, "alert-primary", 10000, "acceptRequest('" + data.userID + "')"));
 });
 
 function acceptRequest(id) {
@@ -78,29 +84,26 @@ function updateUsersList() {
   socket.emit("get username list");
 }
 
-socket.on("joined game", (data) => {
-  console.log("Sucessfully joined game with", data.userName, data);
-
-  gameID = data.gameID;
-  gameJoinedMessage = new bootstrap.Alert(nonDismissible("Currently Playing Game", "with " + data.userName, "alert-info", "LEAVE", "leaveGame()"));
-
-  createPieces(data.top, data.bottom);
-});
-
 socket.on("game update", (data) => {
   console.log(data);
+
+  allServerData = data;
+
+  gameID = data.gameID;
+
+  console.log(data.state[data.yourID].shelf);
+
+  createShelfPieces(data.state[data.yourID].shelf);
+
+  createGamePieces(data.state.board);
 
   let gameStatus = document.getElementById("gameStatus");
 
   if (data.nextPlayer.userID == data.yourID) {
     gameStatus.innerHTML = "IT's YOUR TURN";
-    myTurn = true;
   } else {
-    gameStatus.innerHTML = "IT's " + data.nextPlayer.userName + "'S TURN";
-    myTurn = false;
+    gameStatus.innerHTML = "IT's " + data.nextPlayer.userName + "'s TURN";
   }
-
-  serverBoard = data.state;
 });
 
 function leaveGame() {
@@ -108,16 +111,33 @@ function leaveGame() {
   gameJoinedMessage.close();
 }
 
-function serverFlipPiece(piece) {
-  console.log("FLIPPED", piece);
-  socket.emit("flip piece", { gameID, piece });
+function serverFlipPiece(i, j) {
+  console.log("FLIPPED", i, j);
+  socket.emit("flip piece", { gameID, i, j });
 }
 
-function serverAddPiece(piece) {
-  console.log("ADDED", piece);
-  socket.emit("add to board", { gameID, piece });
+function serverMovedOntoBoard(idx, i, j) {
+  console.log("ADDED", idx);
+  socket.emit("add to board", { gameID, idx, i, j, userID: allServerData.yourID });
+}
+
+function serverMovedAroundBoard(i1, j1, i2, j2) {
+  console.log(i1, j1, i2, j2);
+  socket.emit("moved piece around", { gameID, userID: allServerData.yourID, i1, j1, i2, j2 });
 }
 
 socket.on("error", (data) => {
   createMessage("ERROR", data.msg, "alert-danger");
+});
+
+socket.on("game over", (data) => {
+  console.log("GAME OVER", data);
+  allServerData = data;
+
+  createShelfPieces(data.state[data.yourID].shelf);
+  createGamePieces(data.state.board);
+
+  let gameStatus = document.getElementById("gameStatus");
+  gameStatus.innerHTML = data.msg;
+  createMessage("GAME OVER", data.msg, "alert-info", 15000);
 });

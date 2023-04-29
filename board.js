@@ -9,6 +9,7 @@ class Board {
     this.shelfWidth = this.boardWidth - this.btmSp;
     this.shelfHeight = height - this.boardHeight - this.btmSp;
     this.state = [[], [], [], []];
+    this.shelfColour = "#50a186";
   }
 
   drawBoard() {
@@ -29,7 +30,7 @@ class Board {
     // Draw shelf
     push();
     // noStroke();
-    fill("#217359");
+    fill(this.shelfColour);
     rect(this.shelfPos.x, this.shelfPos.y, this.shelfWidth, this.shelfHeight);
     pop();
   }

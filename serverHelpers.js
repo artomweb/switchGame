@@ -1,4 +1,4 @@
-function createMessage(name, message, buttonFunction, type, timer = 4000) {
+function createMessage(name, message, type, timer = 4000, buttonFunction) {
   let alertsCont = document.getElementById("alerts");
 
   //   if (alertsCont.childElementCount > 3) {
@@ -13,8 +13,7 @@ function createMessage(name, message, buttonFunction, type, timer = 4000) {
 
   wrapper.innerHTML = "<strong>" + name + "</strong> " + message + '<button type="button" class="btn-close"data-bs-dismiss="alert"></button>';
 
-  console.log("BUTTON TEXT", buttonFunction);
-  if (buttonFunction !== "") {
+  if (buttonFunction !== undefined) {
     wrapper.innerHTML += '<hr><button onclick="' + buttonFunction + '">ACCEPT</button>';
   }
 
@@ -40,7 +39,9 @@ function nonDismissible(name, message, type, buttonMessage, buttonFunction) {
 
   wrapper.innerHTML = "<strong>" + name + "</strong> " + message;
 
-  wrapper.innerHTML += '<hr><button onclick="' + buttonFunction + '">' + buttonMessage + "</button>";
+  if (buttonMessage) {
+    wrapper.innerHTML += '<hr><button onclick="' + buttonFunction + '">' + buttonMessage + "</button>";
+  }
 
   alertsCont.appendChild(wrapper);
 
