@@ -21,6 +21,8 @@ socket.on("new user list", function (msg) {
 
 socket.on("connected client", (data) => {
   console.log(data.msg);
+  let sketch = document.getElementById("sketch");
+  sketch.style["touch-action"] = "none";
   if (data.error === undefined) {
     createMessage("Connection Status", "Connection Successful", "alert-success");
     // createMessage("Connection Status", "Connection Successful", "alert-primary", (timed = false));

@@ -31,7 +31,6 @@ body {
 }
 
 canvas {
-  touch-action: none;
   display: block;
   position: relative;
   /* border: 2px solid black; */
