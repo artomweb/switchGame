@@ -27,15 +27,15 @@ body {
   letter-spacing: -4px;
   margin-top: 30px;
   text-align: center;
-  font-size: calc(1.5em + 5.6vw);
+  font-size: calc(1.5em + 4vw);
 }
 
 canvas {
   display: block;
   position: relative;
   /* border: 2px solid black; */
-  max-width: 500px !important;
-  height: auto !important;
+  max-width: 300px !important;
+  height: 375px !important;
 }
 
 .pageContainer {
@@ -46,6 +46,7 @@ canvas {
   position: relative;
   flex-direction: column;
   padding-bottom: 50px;
+  height: calc(100% - 210px);
 }
 
 .gameStatus {
@@ -82,5 +83,6 @@ canvas {
 @media (max-width: 530px) {
   canvas {
     max-width: 95% !important;
+    height: auto !important;
   }
 }
