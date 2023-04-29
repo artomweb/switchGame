@@ -78,3 +78,9 @@ canvas {
   position: relative;
   flex-direction: column;
 }
+
+@media (max-width: 530px) {
+  canvas {
+    max-width: 95% !important;
+  }
+}
