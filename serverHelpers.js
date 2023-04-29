@@ -1,11 +1,11 @@
-function createMessage(name, message, type, timed = true) {
+function createMessage(name, message, buttonFunction, type, timer = 4000) {
   let alertsCont = document.getElementById("alerts");
 
-  if (alertsCont.childElementCount > 0) {
-    // let thisAlert = new bootstrap.Alert(alertsCont.firstChild);
-    // thisAlert.close();
-    alertsCont.firstChild.remove();
-  }
+  //   if (alertsCont.childElementCount > 3) {
+  //     // let thisAlert = new bootstrap.Alert(alertsCont.firstChild);
+  //     // thisAlert.close();
+  //     alertsCont.se.remove();
+  //   }
 
   let wrapper = document.createElement("div");
 
@@ -13,15 +13,36 @@ function createMessage(name, message, type, timed = true) {
 
   wrapper.innerHTML = "<strong>" + name + "</strong> " + message + '<button type="button" class="btn-close"data-bs-dismiss="alert"></button>';
 
+  console.log("BUTTON TEXT", buttonFunction);
+  if (buttonFunction !== "") {
+    wrapper.innerHTML += '<hr><button onclick="' + buttonFunction + '">ACCEPT</button>';
+  }
+
   alertsCont.appendChild(wrapper);
 
-  if (timed) {
+  if (timer) {
     setTimeout(() => {
       let thisAlert = new bootstrap.Alert(wrapper);
       thisAlert.close();
       // if (wrapper.isConnected) {
       //     alertsCont.removeChild(wrapper);
       // }
-    }, 4000);
+    }, timer);
   }
+  return wrapper;
+}
+
+function nonDismissible(name, message, type, buttonMessage, buttonFunction) {
+  let alertsCont = document.getElementById("alerts");
+  let wrapper = document.createElement("div");
+
+  wrapper.classList.add("shortMessage", type, "fade", "show", "alert");
+
+  wrapper.innerHTML = "<strong>" + name + "</strong> " + message;
+
+  wrapper.innerHTML += '<hr><button onclick="' + buttonFunction + '">' + buttonMessage + "</button>";
+
+  alertsCont.appendChild(wrapper);
+
+  return wrapper;
 }

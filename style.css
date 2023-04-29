@@ -45,6 +45,25 @@ canvas {
   gap: 30px;
   position: relative;
   flex-direction: column;
+  padding-bottom: 50px;
+}
+
+.gameStatus {
+  font-size: 20px;
+}
+
+.shortMessage {
+  width: 40% !important;
+}
+
+.alert {
+  /* background-color: #ff4d00 !important; */
+  position: fixed;
+  width: 50%;
+  right: 0;
+  animation: fadeIn 1s;
+  z-index: 1000;
+  padding-top: 20px;
 }
 
 .usernameInputCont {
@@ -58,10 +77,4 @@ canvas {
   align-items: center;
   position: relative;
   flex-direction: column;
-}
-
-@media (max-width: 645px) {
-  canvas {
-    max-width: 95% !important;
-  }
 }

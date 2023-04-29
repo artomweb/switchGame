@@ -8,12 +8,7 @@ class Board {
     this.shelfPos = new p5.Vector(this.btmSp / 2, this.boardHeight + this.btmSp / 2);
     this.shelfWidth = this.boardWidth - this.btmSp;
     this.shelfHeight = height - this.boardHeight - this.btmSp;
-    this.state = [
-      [0, 0, 0, 0],
-      [0, 0, 0, 0],
-      [0, 0, 0, 0],
-      [0, 0, 0, 0],
-    ];
+    this.state = [[], [], [], []];
   }
 
   drawBoard() {

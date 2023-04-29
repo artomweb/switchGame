@@ -5,6 +5,7 @@ class Piece {
     this.topColour = topColour;
     this.bottomColour = bottomColour;
     this.boardCoord = 0;
+    this.owner = myID;
     this.r = 120;
   }
 

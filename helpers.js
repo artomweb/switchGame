@@ -33,3 +33,10 @@ function pointRect(x, y, rx, ry, rw, rh) {
   if (x > rx && x < rx + rw && y > ry && y < ry + rh) return true;
   return false;
 }
+
+function isOccupied(i, j, board) {
+  console.log(i, j);
+  console.log(board[j][i]);
+  if (board[j][i] === null || board[j][i] === undefined) return false;
+  return true;
+}
