@@ -1,4 +1,4 @@
-var socket = io("https://rppi.artomweb.com/filler");
+var socket = io("http://localhost:3000/filler");
 let gameID;
 
 let requestAlert;
@@ -94,9 +94,9 @@ socket.on("game update", (data) => {
 
   gameID = data.gameID;
 
-  console.log(data.state[data.yourID].shelf);
+  console.log(data.state[data.yourID]);
 
-  createShelfPieces(data.state[data.yourID].shelf);
+  createShelfPieces(data.state[data.yourID]);
 
   createGamePieces(data.state.board);
 
@@ -137,7 +137,7 @@ socket.on("game over", (data) => {
   console.log("GAME OVER", data);
   allServerData = data;
 
-  createShelfPieces(data.state[data.yourID].shelf);
+  createShelfPieces(data.state[data.yourID]);
   createGamePieces(data.state.board);
 
   let gameStatus = document.getElementById("gameStatus");
