@@ -85,7 +85,7 @@ function mouseClicked() {
         console.log("clicked on piece, ", boardPieces[i][j]);
         console.log("");
         let coords = getBoardCoords(boardPieces[i][j].pos.x, boardPieces[i][j].pos.y);
-        serverFlipPiece(coords.i, coords.j);
+        serverMove("flip", { i: coords.i, j: coords.j });
       }
     }
   }
@@ -151,12 +151,12 @@ function mouseReleased() {
       movePieceBack(draggingPiece);
     } else {
       if (draggingPieceShelfIndex !== -1) {
-        serverMovedOntoBoard(draggingPieceShelfIndex, i, j);
+        serverMove("add", { idx: draggingPieceShelfIndex, i, j });
         console.log("dragged shelf piece");
         shelfPieces.splice(draggingPieceShelfIndex, 1);
       } else {
         console.log("moved piece on board", draggingPiece.boardCoord);
-        serverMovedAroundBoard(draggingPiece.origin.x, draggingPiece.origin.y, i, j);
+        serverMove("move", { i1: draggingPiece.origin.x, j1: draggingPiece.origin.y, i2, j2 });
       }
       let x = i * boxWidth + boxWidth / 2;
       let y = j * boxHeight + boxHeight / 2;

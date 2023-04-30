@@ -67,7 +67,7 @@ function requestConnection(user) {
 
 socket.on("request incoming", (data) => {
   console.log("Incoming request from: ", data.userName);
-  requestAlert = new bootstrap.Alert(createMessage("REQUEST INCOMING", "From " + data.userName, "alert-primary", 10000, "acceptRequest('" + data.userID + "')"));
+  requestAlert = new bootstrap.Alert(createMessage("REQUEST INCOMING", "From " + data.userName, "alert-primary", 20000, "acceptRequest('" + data.userID + "')"));
 });
 
 function acceptRequest(id) {
@@ -114,23 +114,23 @@ function leaveGame() {
   gameJoinedMessage.close();
 }
 
-function serverFlipPiece(i, j) {
-  console.log("FLIPPED", i, j);
-  socket.emit("flip piece", { gameID, i, j });
-}
-
-function serverMovedOntoBoard(idx, i, j) {
-  console.log("ADDED", idx);
-  socket.emit("add to board", { gameID, idx, i, j, userID: allServerData.yourID });
-}
-
-function serverMovedAroundBoard(i1, j1, i2, j2) {
-  console.log(i1, j1, i2, j2);
-  socket.emit("moved piece around", { gameID, userID: allServerData.yourID, i1, j1, i2, j2 });
+function serverMove(method, move) {
+  console.log("move", move);
+  socket.emit("move", { gameID, method, move });
 }
 
 socket.on("error", (data) => {
   createMessage("ERROR", data.msg, "alert-danger");
+});
+
+socket.on("connect", function () {
+  let gameStatus = document.getElementById("gameStatus");
+  gameStatus.innerHTML = "Connected";
+});
+
+socket.on("disconnect", function () {
+  let gameStatus = document.getElementById("gameStatus");
+  gameStatus.innerHTML = "No server connection";
 });
 
 socket.on("game over", (data) => {
