@@ -1,4 +1,4 @@
-var socket = io("http://localhost:3000/filler");
+var socket = io("https://rppi.artomweb.com/filler");
 let gameID;
 
 let requestAlert;
