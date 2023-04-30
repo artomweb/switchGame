@@ -97,4 +97,8 @@ canvas {
   .alert {
     width: 50%;
   }
+  .usernameInputCont {
+    flex-direction: column;
+    text-align: center;
+  }
 }
