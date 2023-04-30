@@ -156,7 +156,7 @@ function mouseReleased() {
         shelfPieces.splice(draggingPieceShelfIndex, 1);
       } else {
         console.log("moved piece on board", draggingPiece.boardCoord);
-        serverMove("move", { i1: draggingPiece.origin.x, j1: draggingPiece.origin.y, i2, j2 });
+        serverMove("move", { i1: draggingPiece.origin.x, j1: draggingPiece.origin.y, i2: i, j2: j });
       }
       let x = i * boxWidth + boxWidth / 2;
       let y = j * boxHeight + boxHeight / 2;
