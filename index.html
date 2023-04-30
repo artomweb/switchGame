@@ -22,7 +22,7 @@
   <body>
     <div id="alerts"></div>
     <div class="pageContainer">
-      <div class="pageTitle">Switch Game</div>
+      <div class="pageTitle noSelect">Switch Game</div>
       <div id="sketch"></div>
       <div class="gameStatus" id="gameStatus"></div>
       <div class="usernameInputCont">
@@ -32,6 +32,28 @@
       </div>
       <button onclick="updateUsersList()">Update List of Users</button>
       <div class="listOfUsersCont" id="listOfUsers"></div>
+      <div class="rules">
+        <h1>How to play:</h1>
+        <ol>
+          <li>Enter your username and click submit</li>
+          <li>Create a new tab or ask someone else to join the game</li>
+          <li>Click the request button next to someone's username</li>
+          <li>Ask the other player to accept your request</li>
+          <li>The text underneath the game tells you who's turn it is</li>
+        </ol>
+
+        <h1>Rules:</h1>
+        <ul>
+          <li>The objective of the game is to make a square with pieces of your colour</li>
+          <li>Two of your pieces have the opponents colour on the botton, shown by being split down the middle</li>
+          <li><b>When it's your turn, you can either:</b></li>
+          <ol>
+            <li type="a">Move one of your pieces onto the board</li>
+            <li type="a">Move one of your pieces around on the board</li>
+            <li type="a">Flip one of the oponents pieces over</li>
+          </ol>
+        </ul>
+      </div>
     </div>
     <script src="serverHelpers.js"></script>
     <script src="serverConnection.js"></script>

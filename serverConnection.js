@@ -24,7 +24,7 @@ socket.on("connected client", (data) => {
   let sketch = document.getElementById("sketch");
   sketch.style["touch-action"] = "none";
   if (data.error === undefined) {
-    createMessage("Connection Status", "Connection Successful", "alert-success");
+    createMessage("Connection Successful", "", "alert-success");
     // createMessage("Connection Status", "Connection Successful", "alert-primary", (timed = false));
   }
 });
@@ -50,7 +50,7 @@ function updateUsersOnline(msg) {
       listHTML.push("<div> - " + thisUsername + " (YOU)</div>");
     } else {
       if (myID) {
-        listHTML.push("<div> - " + thisUsername + "   <button onclick='requestConnection(\"" + user.id + "\")'>Request</button></div>");
+        listHTML.push("<div> - " + thisUsername + "   <button onclick='requestConnection({id:\"" + user.id + '", userName:"' + thisUsername + "\"})'>Request</button></div>");
       } else {
         listHTML.push("<div> - " + thisUsername + "   </div>");
       }
@@ -59,9 +59,10 @@ function updateUsersOnline(msg) {
   listDiv.innerHTML = listHTML.join("");
 }
 
-function requestConnection(id) {
-  console.log("REQUEST SEND TO ", id);
-  socket.emit("request connection", { id });
+function requestConnection(user) {
+  console.log("REQUEST SEND TO ", user);
+  createMessage("Request Sent to ", user.userName, "alert-info");
+  socket.emit("request connection", { id: user.id });
 }
 
 socket.on("request incoming", (data) => {
