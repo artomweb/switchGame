@@ -1,14 +1,11 @@
 class Board {
   constructor() {
+    let btmSp = 20;
     this.boardHeight = width;
     this.boardWidth = width;
-    this.btmSp = 20;
-    this.orangeColour = "#ec8e45";
-    this.greenColour = "#50a186";
-    this.shelfPos = new p5.Vector(this.btmSp / 2, this.boardHeight + this.btmSp / 2);
-    this.shelfWidth = this.boardWidth - this.btmSp;
-    this.shelfHeight = height - this.boardHeight - this.btmSp;
-    this.state = [[], [], [], []];
+    this.shelfPos = new p5.Vector(btmSp / 2, this.boardHeight + btmSp / 2);
+    this.shelfWidth = this.boardWidth - btmSp;
+    this.shelfHeight = height - this.boardHeight - btmSp;
     this.shelfColour = "#50a186";
   }
 

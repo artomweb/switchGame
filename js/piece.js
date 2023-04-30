@@ -4,7 +4,6 @@ class Piece {
     this.originalPos = new p5.Vector(x, y);
     this.topColour = topColour;
     this.bottomColour = bottomColour;
-    // this.owner = allServerData.yourID;
     this.isShelfPiece = shelfPiece;
     this.r = 120;
   }

@@ -1,6 +1,6 @@
 @font-face {
-  font-family: GillSansMedium;
-  src: url(font/GillSansBold.otf);
+  font-family: GillSansBold;
+  src: url(/font/GillSansBold.otf);
 }
 
 html,
@@ -26,7 +26,7 @@ body {
 }
 
 .pageTitle {
-  font-family: GillSansMedium;
+  font-family: GillSansBold;
   letter-spacing: -4px;
   margin-top: 30px;
   text-align: center;
