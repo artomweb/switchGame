@@ -143,6 +143,8 @@ socket.on("game over", (data) => {
 });
 
 function playAi() {
+  let sketch = document.getElementById("sketch");
+  sketch.style["touch-action"] = "none";
   console.log("play ai");
   socket.emit("play ai");
 }
