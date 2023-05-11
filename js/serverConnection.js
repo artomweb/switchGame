@@ -94,18 +94,16 @@ socket.on("game update", (data) => {
 
   gameID = data.gameID;
 
-  console.log(data.state[data.yourID]);
+  console.log(data.state);
 
-  createShelfPieces(data.state[data.yourID]);
-
-  createGamePieces(data.state.board);
+  createGamePieces(data.state);
 
   let gameStatus = document.getElementById("gameStatus");
 
-  if (data.nextPlayer.userID == data.yourID) {
-    gameStatus.innerHTML = "IT's YOUR TURN";
+  if (data.yourTurn) {
+    gameStatus.innerHTML = "It's YOUR turn";
   } else {
-    gameStatus.innerHTML = "IT's " + data.nextPlayer.userName + "'s TURN";
+    gameStatus.innerHTML = "IT's " + data.nextPlayer + "'s TURN";
   }
 });
 
@@ -114,9 +112,9 @@ function leaveGame() {
   gameJoinedMessage.close();
 }
 
-function serverMove(method, move) {
-  console.log("move", move);
-  socket.emit("move", { gameID, method, move });
+function serverMove(loc) {
+  console.log("move", loc);
+  socket.emit("move", { gameID, loc });
 }
 
 socket.on("error", (data) => {
@@ -137,10 +135,14 @@ socket.on("game over", (data) => {
   console.log("GAME OVER", data);
   allServerData = data;
 
-  createShelfPieces(data.state[data.yourID]);
-  createGamePieces(data.state.board);
+  createGamePieces(data.state);
 
   let gameStatus = document.getElementById("gameStatus");
   gameStatus.innerHTML = data.msg;
   createMessage("GAME OVER", data.msg, "alert-info", 15000);
 });
+
+function playAi() {
+  console.log("play ai");
+  socket.emit("play ai");
+}
