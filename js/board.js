@@ -25,9 +25,10 @@ class Board {
     line(0, h * 3, this.boardWidth, h * 3);
 
     // Draw shelf
+    // console.log("drawing shelf...", this);
     push();
     // noStroke();
-    fill(this.shelfColour);
+    fill("#50a186");
     rect(this.shelfPos.x, this.shelfPos.y, this.shelfWidth, this.shelfHeight);
     pop();
   }
