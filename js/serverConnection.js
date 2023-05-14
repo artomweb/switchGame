@@ -1,4 +1,4 @@
-var socket = io("https://rppi.artomweb.com/filler");
+var socket = io("https://rppi.artomweb.com/switch");
 let gameID;
 
 let requestAlert;
