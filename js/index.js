@@ -50,7 +50,12 @@ function draw() {
   for (let i = 0; i < boardPieces.length; i++) {
     for (let j = 0; j < boardPieces[i].length; j++) {
       if (boardPieces[i][j] === null) continue;
-      boardPieces[i][j].drawPiece();
+      try {
+        boardPieces[i][j].drawPiece();
+      } catch (e) {
+        console.log(e);
+        console.log(boardPieces[i][j]);
+      }
     }
   }
 
