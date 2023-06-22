@@ -1,5 +1,7 @@
 ## A digital version of the board game "Switch"
 
-# Demo:
+---
 
-![swithGame](switchDemo.JPG)
+## Website layout:
+
+![swithGame](switch.artomweb.com_.png)
