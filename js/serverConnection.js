@@ -1,4 +1,4 @@
-var socket = io("https://rppi.artomweb.com/switch");
+var socket = io("https://api.artomweb.com/switch");
 let gameID;
 
 let requestAlert;
@@ -8,12 +8,14 @@ let serverData;
 
 let allServerData;
 
-document.getElementById("usernameInput").addEventListener("keyup", function (event) {
-  event.preventDefault();
-  if (event.code === "Enter") {
-    document.getElementById("submitButton").click();
-  }
-});
+document
+  .getElementById("usernameInput")
+  .addEventListener("keyup", function (event) {
+    event.preventDefault();
+    if (event.code === "Enter") {
+      document.getElementById("submitButton").click();
+    }
+  });
 
 socket.on("new user list", function (msg) {
   updateUsersOnline(msg);
@@ -50,7 +52,15 @@ function updateUsersOnline(msg) {
       listHTML.push("<div> - " + thisUsername + " (YOU)</div>");
     } else {
       if (myID) {
-        listHTML.push("<div> - " + thisUsername + "   <button onclick='requestConnection({id:\"" + user.id + '", userName:"' + thisUsername + "\"})'>Request</button></div>");
+        listHTML.push(
+          "<div> - " +
+            thisUsername +
+            "   <button onclick='requestConnection({id:\"" +
+            user.id +
+            '", userName:"' +
+            thisUsername +
+            "\"})'>Request</button></div>"
+        );
       } else {
         listHTML.push("<div> - " + thisUsername + "   </div>");
       }
@@ -67,7 +77,15 @@ function requestConnection(user) {
 
 socket.on("request incoming", (data) => {
   console.log("Incoming request from: ", data.userName);
-  requestAlert = new bootstrap.Alert(createMessage("REQUEST INCOMING", "From " + data.userName, "alert-primary", 20000, "acceptRequest('" + data.userID + "')"));
+  requestAlert = new bootstrap.Alert(
+    createMessage(
+      "REQUEST INCOMING",
+      "From " + data.userName,
+      "alert-primary",
+      20000,
+      "acceptRequest('" + data.userID + "')"
+    )
+  );
 });
 
 function acceptRequest(id) {

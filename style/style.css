@@ -1,90 +1,89 @@
 @font-face {
-    font-family: GillSansBold;
-    src: url(/font/GillSansBold.otf);
+  font-family: GillSansBold;
+  src: url(/font/GillSansBold.otf);
 }
 
 html,
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .noSelect {
-    -webkit-touch-callout: none;
-    /* iOS Safari */
-    -webkit-user-select: none;
-    /* Safari */
-    -khtml-user-select: none;
-    /* Konqueror HTML */
-    -moz-user-select: none;
-    /* Old versions of Firefox */
-    -ms-user-select: none;
-    /* Internet Explorer/Edge */
-    user-select: none;
-    /* Non-prefixed version, currently
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
 }
 
 .pageTitle {
-    font-family: GillSansBold;
-    letter-spacing: -4px;
-    margin-top: 30px;
-    text-align: center;
-    font-size: 64px;
+  font-family: GillSansBold;
+  letter-spacing: -4px;
+  margin-top: 30px;
+  text-align: center;
+  font-size: 64px;
 }
 
 canvas {
-    display: block;
-    position: relative;
-    /* border: 2px solid black; */
-    max-width: 300px !important;
-    height: 375px !important;
+  display: block;
+  position: relative;
+  /* border: 2px solid black; */
+  max-width: 300px !important;
+  height: 375px !important;
 }
 
 .pageContainer {
-    /* min-height: 100vh; */
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    position: relative;
-    flex-direction: column;
-    padding-bottom: 50px;
-    height: calc(100% - 210px);
+  /* min-height: 100vh; */
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+  flex-direction: column;
+  padding-bottom: 50px;
+  height: calc(100% - 210px);
 }
 
 .gameStatus {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .alert {
-    /* background-color: #ff4d00 !important; */
-    position: fixed;
-    width: 25%;
-    right: 0;
-    animation: fadeIn 1s;
-    z-index: 1000;
-    padding-top: 20px;
+  /* background-color: #ff4d00 !important; */
+  position: fixed;
+  width: 25%;
+  right: 0;
+  animation: fadeIn 1s;
+  z-index: 1000;
+  padding-top: 20px;
 }
 
 .usernameInputCont {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
 #sketch {
-    display: flex;
-    align-items: center;
-    position: relative;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
 }
 
 .rules {
-    max-width: 600px;
+  max-width: 600px;
 }
 
 @media (max-width: 500px) {
-<<<<<<< HEAD
   canvas {
     max-width: 95% !important;
     height: auto !important;
@@ -99,27 +98,7 @@ canvas {
     width: 50%;
   }
   .usernameInputCont {
-    flex-direction: column;
     text-align: center;
+    flex-direction: column;
   }
 }
-=======
-    canvas {
-        max-width: 95% !important;
-        height: auto !important;
-    }
-    .rules {
-        width: 95%;
-    }
-    .pageTitle {
-        font-size: 52px;
-    }
-    .alert {
-        width: 50%;
-    }
-    .usernameInputCont {
-        text-align: center;
-        flex-direction: column;
-    }
-}
->>>>>>> local
