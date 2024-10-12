@@ -1,5 +1,6 @@
-// var socket = io("https://api.artomweb.com/switch");
-var socket = io("http://localhost:4000/switch");
+const socket = io("https://artomweb.com", {
+  path: "/switch",
+});
 let gameID;
 
 let requestAlert;
