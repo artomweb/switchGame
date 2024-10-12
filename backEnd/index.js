@@ -14,3 +14,5 @@ const switchSocket = io.of("/switch");
 switchSocket.on("connection", (socket) => {
   handleSwitchSocket(socket);
 });
+
+httpServer.listen(2037);
