@@ -1,17 +1,17 @@
-const httpServer = require("http").createServer();
-const { Server } = require("socket.io");
+import { createServer } from "http";
+import { Server } from "socket.io";
 
-let _ = require("lodash");
-const switchHelpers = require("./helpers");
-const aiHelpers = require("./ai");
-
+const httpServer = createServer();
 const io = new Server(httpServer, {
-  // ...
   cors: {
     origin: "*",
   },
   path: "/switch",
 });
+
+let _ = require("lodash");
+const switchHelpers = require("./helpers");
+const aiHelpers = require("./ai");
 
 let usersList = {};
 let gamesList = {};
