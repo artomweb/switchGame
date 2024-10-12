@@ -1,4 +1,4 @@
-const socket = io("https://artomweb.com", {
+const socket = io("https://api.artomweb.com", {
   path: "/switch",
 });
 let gameID;
