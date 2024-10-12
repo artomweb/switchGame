@@ -7,6 +7,7 @@ const io = require("socket.io")(httpServer, {
   cors: {
     origin: "*",
   },
+  path: "/switch",
 });
 
 const switchSocket = io.of("/switch");
